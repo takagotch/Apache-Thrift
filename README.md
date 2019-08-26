@@ -40,6 +40,7 @@ namespace Thrift.Transports.Client
     {
     }
     
+    
     public override async Task<int> ReadAsync(byte[] buffer, int offset, int length,
         CancellationToken cancellationToken)
     {
@@ -48,15 +49,10 @@ namespace Thrift.Transports.Client
     
     public override async Task WriteAsync(byte[] buffer, CancellationToken cancellationToken)
     {
-      await _byteStream.WriteAsync(buffer, 0, buffer.Length, cancellationToken);
+      await _byteStream.WriteAsyc(buffer, 0, buffer.Length, cancellationToken);
     }
     
-    
-    
-    
-    
-    
-    public override async Task WriteAsync()
+    public override async Task WriteAsync(byte[] buffer, int offset, int length, CancellationToken cancellationToken)
     {
       await _byteStream.WriteAsync(buffer, offset, length, cancellationToken);
     }
